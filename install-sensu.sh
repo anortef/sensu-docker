@@ -7,6 +7,7 @@ apt-get install sensu uchiwa rabbitmq-server -y
 if [ -n "${CREATE_QUEUE+1}" ]; then
     if [ "$CREATE_QUEUE" = true ]; then
         echo "Preparing rabbit..."
+        chmod +x /tmp/preparerabbit.sh
         /tmp/preparerabbit.sh
     else
         echo "Rabbit already prepared"
