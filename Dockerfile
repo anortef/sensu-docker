@@ -14,3 +14,6 @@ RUN /tmp/install-sensu.sh
 
 ADD start.sh /tmp/start.sh
 CMD /tmp/start.sh
+
+EXPOSE 3000
+EXPOSE 4567

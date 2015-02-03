@@ -1,5 +1,7 @@
 #!/bin/bash
 
-/etc/init.d/sensu-server start
-/etc/init.d/sensu-api start
-/etc/init.d/sensu-client start
+service sensu-server start
+service sensu-api start
+service sensu-client start
+service uchiwa start
+tail -f /var/log/sensu/sensu-server.log
