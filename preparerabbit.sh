@@ -1,8 +1,5 @@
 #!/bin/bash
-touch /var/lib/rabbitmq/.erlang.cookie
-echo $ERLANG_COOKIE > /var/lib/rabbitmq/.erlang.cookie
-chown rabbitmq.rabbitmq /var/lib/rabbitmq/.erlang.cookie
-chmod 400 /var/lib/rabbitmq/.erlang.cookie
-rabbitmqctl -n rabbit@rabbitmq add_vhost /sensu
-rabbitmqctl -n rabbit@rabbitmq add_user sensu mypass
-rabbitmqctl -n rabbit@rabbitmq set_permissions -p /sensu sensu ".*" ".*" ".*"
+chmod +x /tmp/rabbitmqadmin
+/tmp/rabbitmqadmin -H rabbitmq declare vhost name=/sensu
+/tmp/rabbitmqadmin -H rabbitmq declare user name=sensu password=mypass tags=sensu
+/tmp/rabbitmqadmin -H rabbitmq declare permission vhost=/sensu user=sensu configure=".*" write=".*" read=".*"
